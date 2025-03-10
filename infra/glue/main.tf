@@ -1,5 +1,6 @@
 resource "aws_glue_job" "bovespa_job" {
   name     = "bovespa"
+  role_arn = var.role_arn
 
   command {
     name            = "glueetl"
