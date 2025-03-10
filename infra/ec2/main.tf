@@ -1,5 +1,5 @@
-resource "aws_security_group" "allow_ssh3" {
-  name        = "allow_ssh3"
+resource "aws_security_group" "allow_ssh4" {
+  name        = "allow_ssh4"
   description = "Allow SSH access"
    
   ingress {
@@ -34,24 +34,29 @@ resource "aws_security_group" "allow_ssh3" {
 resource "aws_instance" "ec2_instance" {
   ami           = "ami-04b4f1a9cf54c11d0"
   instance_type = "t2.micro"
-  key_name      = "ec2_fiap"  # Alterar
-  security_groups = [aws_security_group.allow_ssh3.name]
+  key_name      = "ec2_fiap" 
+  security_groups = [aws_security_group.allow_ssh4.name]
  
   provisioner "file" {
-    source      = "../../scripts/scraping.py"
+    source      = "${path.module}/../../scripts/scraping.py"
     destination = "/home/ubuntu/scraping.py"
+  }
+
+  provisioner "file" {
+    source      = "${path.module}/../../requirements.txt"
+    destination = "/home/ubuntu/requirements.txt"
   }
 
   user_data = file("user_data.sh")
 
   tags = {
-    Name = "ec2_fiap_tc333"
+    Name = "ec2_fiap_bovespa"
   }
 
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("~/.ssh/ec2_fiap.pem") # Alterar
+    private_key = file("~/.ssh/ec2_fiap.pem")
     host        = self.public_ip
   }
 }
