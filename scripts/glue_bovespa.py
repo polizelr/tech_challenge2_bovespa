@@ -90,7 +90,7 @@ df = df.withColumn("data_referencia", lit(reference_date))
 df = cast_columns(df)
 df.printSchema()
 
-## requisito 5-c: calculo com datas
+# requisito 5-c: calculo com datas
 if len(sorted_partitions) < 2:
     # nao existem duas particoes (primeiro processamento)
     df = df.withColumn("quantidade_dias_ultima_data_referencia", lit(0))
@@ -100,7 +100,7 @@ else:
     # diferenca em dias entre a particao atual e a particao anterior
     df = df.withColumn("quantidade_dias_ultima_data_referencia", datediff(col("data_referencia"), lit(previous_partition_reference_date)))
 
-
+# requisito 5-a: agrupamento numerico, sumarizacao, contagem ou soma
 # soma da quantidade teorica e da participacao_percentual por acao
 df_grouped = (
     df.groupBy("acao")
