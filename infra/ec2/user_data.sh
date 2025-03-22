@@ -13,6 +13,4 @@ sudo apt-get install -f
 
 pip install pandas bs4 requests selenium webdriver-manager pyarrow
 
-python3 /home/ubuntu/scraping.py
-
-echo "Finished" > /home/ubuntu/logs.txt
+echo "EC2 criada com sucesso." > /home/ubuntu/logs.txt

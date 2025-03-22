@@ -90,3 +90,6 @@ if os.path.exists(local_path_partition):
             s3_file_path = f"{s3_prefix}/ano_mes_dia={today}/{file}" 
 
             s3_client.upload_file(local_file_path, bucket_name, s3_file_path)
+
+
+print('Extração de dados finalizada com sucesso!')

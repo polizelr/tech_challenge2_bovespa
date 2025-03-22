@@ -19,8 +19,6 @@ job.init(args['JOB_NAME'], args)
 raw_bucket = "fiap-mle-tc2"
 raw_prefix = "raw/dados_bovespa/"
 output_path = "s3://fiap-mle-tc2/refined/bovespa/"
-database_name = "fiap"
-table_name = "bovespa"
 
 # obtem os dados
 def fetch_data(partition_order):
