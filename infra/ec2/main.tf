@@ -1,7 +1,7 @@
-resource "aws_security_group" "allow_ssh4" {
-  name        = "allow_ssh4"
+resource "aws_security_group" "allow_ssh" {
+  name        = "allow_ssh_mle"
   description = "Allow SSH access"
-   
+  
   ingress {
     from_port   = 22
     to_port     = 22
@@ -34,23 +34,18 @@ resource "aws_security_group" "allow_ssh4" {
 resource "aws_instance" "ec2_instance" {
   ami           = "ami-04b4f1a9cf54c11d0"
   instance_type = "t2.micro"
-  key_name      = "ec2_fiap" 
-  security_groups = [aws_security_group.allow_ssh4.name]
- 
+  key_name      = "ec2_fiap"
+  security_groups = [aws_security_group.allow_ssh.name]
+
   provisioner "file" {
     source      = "${path.module}/../../scripts/scraping.py"
     destination = "/home/ubuntu/scraping.py"
   }
 
-  provisioner "file" {
-    source      = "${path.module}/../../requirements.txt"
-    destination = "/home/ubuntu/requirements.txt"
-  }
-
   user_data = file("user_data.sh")
 
   tags = {
-    Name = "ec2_fiap_bovespa"
+    Name = "ec2_mle_fiap"
   }
 
   connection {
