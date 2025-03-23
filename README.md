@@ -57,7 +57,7 @@ sudo mv terraform /usr/local/bin/
 
 Adicione as credenciais do **AWS CLI** presentes no **AWS Details** do **AWS Academy Lab** e salve o arquivo.
 
-`**Atenção: As credenciais mudam a cada 4 horas.**`
+**`Atenção: As credenciais mudam a cada 4 horas.`**
 
 ### 3. Instalar e Configurar o Git
 
