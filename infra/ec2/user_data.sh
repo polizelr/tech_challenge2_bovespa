@@ -5,7 +5,7 @@ sudo apt install -y python3 python3-pip
 sudo apt install -y cron
 
 # adiciona uma linha ao crontab para executar o script de segunda a sexta as 18h
-(sudo crontab -l 2>/dev/null; echo "00 21 * * 1-5 . /tc2_bovespa/bin/activate && python3 /home/ubuntu/scraping.py >> /home/ubuntu/cron.log 2>&1 && deactivate") | sudo crontab -
+(crontab -l 2>/dev/null; echo "00 21 * * 1-5 . /tc2_bovespa/bin/activate && python3 /home/ubuntu/scraping.py >> /home/ubuntu/cron.log 2>&1 && deactivate") | crontab -
 
 chmod +x scraping.py
 
